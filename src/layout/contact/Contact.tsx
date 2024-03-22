@@ -1,10 +1,14 @@
+import { Container } from "../../components/container/Container";
 import { Section } from "../../components/section/Section";
 
 export function Contact(){
     return (
         <Section>
-            <p>Contacts</p>
+            <Container>
+                <p>Contacts</p>
+            </Container>
         </Section>
+
     )
 }
 

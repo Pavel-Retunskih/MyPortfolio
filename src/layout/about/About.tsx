@@ -5,7 +5,9 @@ import { Container } from "../../components/container/Container";
 export function About(){
     return (
         <Section>
-           <p>About</p>
+            <Container>
+                <p>About</p>
+            </Container>
         </Section>
     )
 }

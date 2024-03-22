@@ -10,9 +10,9 @@ export function Header (){
                 <NavMenu>
                     <NavMenuItem><Link to = "/">micheal-weaver</Link></NavMenuItem>
                     <NavMenuItem><Link to = "/">_hello</Link></NavMenuItem>
-                    <NavMenuItem><Link to = "/about">_about-me</Link></NavMenuItem>
-                    <NavMenuItem><Link to = "/projects">_projects</Link></NavMenuItem>
-                    <NavMenuItem><Link to = "/contact">_contact-me</Link></NavMenuItem>
+                    <NavMenuItem><Link to = "about">_about-me</Link></NavMenuItem>
+                    <NavMenuItem><Link to = "projects">_projects</Link></NavMenuItem>
+                    <NavMenuItem><Link to = "contact">_contact-me</Link></NavMenuItem>
                 </NavMenu>
             </Navigation>
         </StyledHeader>
@@ -22,8 +22,9 @@ export function Header (){
 const StyledHeader = styled.header`
     width: 100%;
     max-width: 1782px;   
-    height: 56px;
     border: 2px solid red;
+    margin: 0 auto;
+    background-color: ${Theme.colors.primary.blue};
 `
 const Navigation = styled.nav`
 
@@ -42,5 +43,5 @@ const NavMenu = styled.ul`
     }
 `
 const NavMenuItem = styled.li`
-    padding: 20px 30px;
+    padding: 17px 30px;
 `
