@@ -10,7 +10,8 @@ export function Home(){
     return (
         <Section>
             <Container>
-                <FlexWrapper>
+                
+                <FlexWrapper direction="column">
                     <MainText>Hi all. I am</MainText>
                     <HeadlineText>Micheal Weaver</HeadlineText>
                     <MainTitle>&lt; Front-end developer</MainTitle>
