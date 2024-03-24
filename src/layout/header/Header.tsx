@@ -10,7 +10,7 @@ export function Header (){
             <Navigation>
                 <NavMenu>
                     <FlexWrapper>
-                        <NavMenuItem><Link to = "/">micheal-weaver</Link></NavMenuItem>
+                        <NavMenuItem><Link to = "/">pavel-retynskih</Link></NavMenuItem>
                         <NavMenuItem><Link to = "/">_hello</Link></NavMenuItem>
                         <NavMenuItem><Link to = "about">_about-me</Link></NavMenuItem>
                         <NavMenuItem><Link to = "projects">_projects</Link></NavMenuItem>
@@ -25,8 +25,7 @@ export function Header (){
 
 const StyledHeader = styled.header`
     width: 100%;
-    max-width: 1782px;   
-    border: 2px solid red;
+    max-width: 1782px;
     margin: 0 auto;
     background-color: ${Theme.colors.primary.blue};
    
