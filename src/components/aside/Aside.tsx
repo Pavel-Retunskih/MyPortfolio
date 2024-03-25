@@ -6,18 +6,28 @@ import subInfoArrow from "../../assets/subInfoArrow.png"
 import pinkFolder from "../../assets/pinkFolder.png"
 import greenFolder from "../../assets/greenFolder.png"
 import blueFolder from "../../assets/blueFolder.png"
+import subListIcon from "../../assets/subListIcon.png"
+import { Icon } from "../icon/Icon"
 
 
 export function Aside(){
     return(
         <StyledAside>
-            <IconsBar></IconsBar>
+            <IconsBar>
+                <li><Icon iconId = "aside_icon_professional"/></li>
+                <li><Icon iconId = "aside_icon_personal"/></li>
+                <li><Icon iconId = "aside_icon_hobby"/></li>
+            </IconsBar>
             <Info>
                 <InfoItem><span>personal-info</span></InfoItem>
                 <SubInfo>
                         <SubInfoListItem><SubInfoItem image={`${pinkFolder}`}>bio</SubInfoItem></SubInfoListItem>
                         <SubInfoListItem><SubInfoItem image={`${greenFolder}`}>interests</SubInfoItem></SubInfoListItem>
                         <SubInfoListItem><SubInfoItem image={`${blueFolder}`}>education</SubInfoItem></SubInfoListItem>
+                        <SubInfo>
+                            <SubInfoListItem><SubInfoItem image={`${subListIcon}`}>high-school</SubInfoItem></SubInfoListItem>
+                            <SubInfoListItem><SubInfoItem image={`${subListIcon}`}>high-school</SubInfoItem></SubInfoListItem>
+                        </SubInfo>
                 </SubInfo>
                 <InfoItem>contacts</InfoItem>
             </Info>
@@ -36,21 +46,29 @@ const StyledAside = styled.aside`
     border-right: 1px solid ${Theme.colors.lines};
 `
 
-const IconsBar = styled.div`
+const IconsBar = styled.ul`
     border-right: 1px solid ${Theme.colors.lines};
     padding: 17px 20px 0 24px;
     width: 68px;
     height: 100%;
 `
+
 const Info = styled.ul`
     
 `
 const InfoItem = styled.li`
     color: ${Theme.colors.secondary.white};
     border-bottom: 1px solid ${Theme.colors.lines};
+    border-top: 1px solid ${Theme.colors.lines};
     padding: 10px 94px 10px 34px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    margin-top: 27px;
+    &:first-child{
+        border-bottom: 1px solid ${Theme.colors.lines};
+        border-top: none;
+        margin-top: 0;
+    }
     &::before{
         content: '';
         position: absolute;
