@@ -62,7 +62,7 @@ const Title = styled.h3`
     color: ${Theme.colors.secondary.grey};
     border-right: 1px solid ${Theme.colors.lines};
     max-width: 218px;
-    padding: 15px 10px;
+    padding: 10px 10px;
     font-weight: 400;
 
 `
