@@ -6,20 +6,29 @@ import { Theme } from "../../styles/Theme";
 import { SnakeGame } from "./snakeGame/SnakeGame";
 
 
-export function Home(){
+
+
+type HomePropsType = {
+    greeting: string
+    headLine: string
+    mainTitle: string
+    link: string
+}
+
+export function Home(props:HomePropsType){
     return (
         <Section>
             <Container>
                 <FlexWrapper direction="row" justify="space-around" align="center" wrap="wrap"
                     style={{padding:"180px 0"}}>
                         <FlexWrapper direction="column" align="flex-start">
-                            <MainTextGreeting>Hi all. I am</MainTextGreeting>
-                            <HeadlineText>Pavel Retynskih</HeadlineText>
-                            <MainTitle>&lt; Front-end developer</MainTitle>
+                            <MainTextGreeting>{props.greeting}</MainTextGreeting>
+                            <HeadlineText>{props.headLine}</HeadlineText>
+                            <MainTitle>&lt; {props.mainTitle}</MainTitle>
                             <MainComentsText>// complete the game to continue</MainComentsText>
                             <MainComentsText>// you can also see it on my Github page</MainComentsText>
                             <Text color = "#E5E9F0" size = {Theme.font.size.labes}>
-                            <ColorText color={Theme.colors.secondary.blue} size = {Theme.font.size.labes}>const githubLink</ColorText> = <a href="https://github.com/Pavel-Retunskih"><ColorText color={Theme.colors.accent.pink} size = {Theme.font.size.labes}>“https://github.com/Pavel-Retunskih”</ColorText></a>
+                            <ColorText color={Theme.colors.secondary.blue} size = {Theme.font.size.labes}>const githubLink</ColorText> = <a href={props.link}><ColorText color={Theme.colors.accent.pink} size = {Theme.font.size.labes}>“${props.link}”</ColorText></a>
                             </Text>
                         </FlexWrapper>
                         <SnakeGame/>
