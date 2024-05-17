@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Theme } from "../../styles/Theme";
-import { FlexWrapper } from "./../../components/flexwrapper/FlexWrapper";
 import { NavBar } from "./navigation/NavBar";
 
 const headerMenuItemsData = [

@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { FlexWrapper } from "../../../components/flexwrapper/FlexWrapper";
 import { Theme } from "../../../styles/Theme";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 type NavBarPropsType = {
   items: Array<itemsPropsType>;
@@ -18,7 +17,7 @@ export function NavBar(props: NavBarPropsType) {
       <NavMenu>
         {props.items.map(({ link, description }) => (
           <NavMenuItem>
-            <Link to={link}>{description}</Link>
+            <NavLink to={link}>{description}</NavLink>
           </NavMenuItem>
         ))}
       </NavMenu>
@@ -43,15 +42,21 @@ const NavMenu = styled.ul`
   }
 `;
 const NavMenuItem = styled.li`
+  box-sizing: border-box;
   border-right: 1px solid ${Theme.colors.lines};
   padding: 17px 30px;
+  border-bottom: 3px solid transparent;
   &:first-child {
     padding: 17px 155px 17px 22px;
+    border-bottom: none;
   }
   &:last-child {
     padding: 17px 23px;
     border-right: none;
     border-left: 1px solid ${Theme.colors.lines};
     margin-left: auto;
+  }
+  &:hover {
+    border-bottom-color: ${Theme.colors.accent.orange};
   }
 `;
