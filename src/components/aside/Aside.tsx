@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Theme } from "../../styles/Theme";
-import { FlexWrapper } from "../flexwrapper/FlexWrapper";
 import listArrow from "../../assets/Vector.png";
 import subInfoArrow from "../../assets/subInfoArrow.png";
 import pinkFolder from "../../assets/pinkFolder.png";
@@ -10,78 +9,138 @@ import subListIcon from "../../assets/subListIcon.png";
 import { Icon } from "../icon/Icon";
 import { useState } from "react";
 
-const asideData = [
-  {
-    id: "professional-info",
-    title: "professional-info",
-    iconId: "aside_icon_professional",
-  },
-  {
-    id: "personal-info",
-    title: "personal-info",
-    iconId: "aside_icon_personal",
-  },
-  { id: "hobbies", title: "hobbies", iconId: "aside_icon_hobby" },
-];
-const informationData = {
-  ["personal-info"]: {
-    title: "personal-info",
-    info: {
-      bio: { title: "bio", image: "pinkFolder", description: [] },
-      interests: { title: "interests", image: "greenFolder", description: [] },
-      education: {
-        title: "interests",
-        image: "blueFolder",
-        description: [
-          { title: "high-school", image: "subListIcon" },
-          { title: "university", image: "subListIcon" },
-        ],
-      },
-    },
-  },
-  ["professional-info"]: {
-    info: {
-      bio: [],
-      interests: [],
-      education: [{ title: "high-school" }, { title: "university" }],
-    },
-  },
-  ["hobbies"]: {
-    info: {
-      bio: {
-        title: "bio",
-        image: "pinkFolder",
-        description: [],
-      },
-      interests: [],
-      education: [{ title: "high-school" }, { title: "university" }],
-    },
-  },
-};
 export function Aside() {
-  const [state, setState] = useState();
+  type asideDataType = {
+    id: string;
+    title: string;
+    iconId: string;
+    colapsed: boolean;
+  };
+
+  type infoDataTypes = {
+    bio: bioDataType;
+    interests: bioDataType;
+    education: bioDataType;
+  };
+
+  type bioDataType = {
+    title: string;
+    image: string;
+    description: descriptionDataType[];
+  };
+
+  type descriptionDataType = {
+    title: string;
+    image: string;
+  };
+
+  type informationDataType = {
+    [key: string]: {
+      title: string;
+      info: infoDataTypes;
+    };
+  };
+
+  const AsideData: asideDataType[] = [
+    {
+      id: "professionalinfo",
+      title: "professional-info",
+      iconId: "aside_icon_professional",
+      colapsed: true,
+    },
+    {
+      id: "personalinfo",
+      title: "personal-info",
+      iconId: "aside_icon_personal",
+      colapsed: true,
+    },
+    {
+      id: "hobbies",
+      title: "hobbies",
+      iconId: "aside_icon_hobby",
+      colapsed: true,
+    },
+  ];
+
+  const informationData: informationDataType = {
+    ["personalinfo"]: {
+      title: "personal-info",
+      info: {
+        bio: { title: "bio", image: pinkFolder, description: [] },
+        interests: {
+          title: "interests",
+          image: greenFolder,
+          description: [],
+        },
+        education: {
+          title: "interests",
+          image: blueFolder,
+          description: [
+            { title: "high-school", image: "subListIcon" },
+            { title: "university", image: "subListIcon" },
+          ],
+        },
+      },
+    },
+    ["professionalinfo"]: {
+      title: "professional-info",
+      info: {
+        bio: { title: "bio", image: pinkFolder, description: [] },
+        interests: { title: "bio", image: pinkFolder, description: [] },
+        education: { title: "bio", image: pinkFolder, description: [] },
+      },
+    },
+    ["hobbies"]: {
+      title: "hobbies",
+      info: {
+        bio: {
+          title: "bio",
+          image: pinkFolder,
+          description: [],
+        },
+        interests: { title: "bio", image: pinkFolder, description: [] },
+        education: { title: "bio", image: pinkFolder, description: [] },
+      },
+    },
+  };
+  const [state, setState] = useState(informationData["personalinfo"]);
+  console.log(state);
+
+  const onClickHandler = (key: string) => {
+    setState(informationData[key]);
+  };
   return (
     <StyledAside>
       <IconsBar>
-        {asideData.map((data) => (
-          <li>
+        {AsideData.map((data) => (
+          <li
+            onClick={() => {
+              onClickHandler(data.id);
+            }}
+          >
             <Icon iconId={data.iconId} />
           </li>
         ))}
       </IconsBar>
       <Info>
         <InfoItem>
-          <span>{informationData["personal-info"].title}</span>
+          <span>{state.title}</span>
         </InfoItem>
         <SubInfo>
           <SubInfoListItem>
-            <SubInfoItem image={`${pinkFolder}`}>bio</SubInfoItem>
+            <SubInfoItem image={state.info.bio.image}>
+              {state.info.bio.title}
+            </SubInfoItem>
           </SubInfoListItem>
           <SubInfoListItem>
-            <SubInfoItem image={`${greenFolder}`}>interests</SubInfoItem>
+            <SubInfoItem image={state.info.interests.image}>
+              {state.info.interests.title}
+            </SubInfoItem>
           </SubInfoListItem>
           <SubInfoListItem>
-            <SubInfoItem image={`${blueFolder}`}>education</SubInfoItem>
+            <SubInfoItem image={state.info.education.image}>
+              {state.info.education.title}
+            </SubInfoItem>
           </SubInfoListItem>
           <SubInfo>
             <SubInfoListItem>
@@ -124,6 +183,7 @@ const InfoItem = styled.li`
   position: relative;
   margin-bottom: 18px;
   margin-top: 27px;
+  white-space: nowrap;
   &:first-child {
     border-bottom: 1px solid ${Theme.colors.lines};
     border-top: none;
